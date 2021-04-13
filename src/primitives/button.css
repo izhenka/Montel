@@ -1,27 +1,26 @@
 .button {
-    display: inline-block;
-    padding: 0.35em 1.2em;
-    border: 0.1em solid #000000;
-    margin: 0 0.3em 0.3em 0;
-    border-radius: 0.12em;
-    box-sizing: border-box;
+    padding: 0.35rem 1.2em;
+    border: 0.1rem solid #444;
+    margin: 0 0.3rem 0.3rem 0;
+    border-radius: 0.12rem;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    color: #000000;
+    color: #444;
     text-align: center;
     transition: all 0.2s;
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
-.button:hover, .button.active {
+.button:hover, .button:focus, .button.active {
     color: #FFFFFF;
-    background-color: #000000;
+    background-color: #444;
 }
 
-@media all and (max-width: 30em) {
+@media screen and (max-width: 30rem) {
     .button {
         display: block;
-        margin: 0.4em auto;
+        margin: 0.4rem auto;
         width: 100%;
     }
 }

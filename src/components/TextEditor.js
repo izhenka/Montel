@@ -15,6 +15,7 @@ const TextEditor = () => {
                 <input
                     value={textEdit}
                     onChange={event => dispatch(setTextEdit(event.target.value))}
+                    autoFocus={true}
                 />
             </div>
 

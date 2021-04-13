@@ -1,0 +1,16 @@
+.icon-button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: .5rem;
+}
+
+.icon-button:hover, .icon-button:focus {
+    background-color: #f1f1f1;
+
+}
+
+.icon-button:hover .icon, .icon-button:focus .icon {
+    color: #0b0d0e;
+}

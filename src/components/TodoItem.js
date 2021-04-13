@@ -1,19 +1,33 @@
-import {useDispatch} from "react-redux";
-import {toggleItemIsCompleted} from "../slices/todoList";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteItem, getIsInEditMode, setIdEdit, toggleItemIsCompleted} from "../slices/todoList";
+import IconButton from "../primitives/IconButton";
+import {mdiCheck, mdiDeleteOutline, mdiPencilOutline, mdiRadioboxBlank} from "@mdi/js";
+import TextEditor from "./TextEditor";
+
 
 const TodoItem = ({id, text, isCompleted}) => {
+    const isInEditMode = useSelector(state => getIsInEditMode(state, id));
     const dispatch = useDispatch();
+
+    if (isInEditMode) {
+        return <TextEditor/>
+    }
     return (
         <div className='todo-item'>
-            <input type="checkbox"
-                   checked={isCompleted}
-                   onChange={() => dispatch(toggleItemIsCompleted(id))}
-            />
+            <ToggleButton isCompleted={isCompleted} itemId={id}/>
             <span className={isCompleted && 'completed'}>{text}</span>
+            <IconButton path={mdiPencilOutline} onClick={() => dispatch(setIdEdit(id))}/>
+            <IconButton path={mdiDeleteOutline} onClick={() => dispatch(deleteItem(id))}/>
         </div>
     )
-
-
 };
+
+const ToggleButton = ({isCompleted, itemId}) => {
+    const dispatch = useDispatch();
+    const iconPath = isCompleted ? mdiCheck : mdiRadioboxBlank;
+    return (
+        <IconButton path={iconPath} onClick={() => dispatch(toggleItemIsCompleted(itemId))}/>
+    )
+}
 
 export default TodoItem;

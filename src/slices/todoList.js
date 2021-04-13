@@ -1,7 +1,8 @@
 import {createSlice, nanoid} from "@reduxjs/toolkit";
 
 export const TODO_LIST_NAME = 'todolist';
-export const NEW_ITEM = 'NEW_ITEM';
+export const NEW_ITEM_ID = 'NEW_ITEM_ID';
+export const ALL_FILTER = undefined;
 export const COMPLETED_FILTER = 'COMPLETED_FILTER';
 export const NOT_COMPLETED_FILTER = 'NOT_COMPLETED_FILTER';
 
@@ -13,8 +14,7 @@ export const createTodoItem = (data = {}) => ({
 
 export const initialState = {
     items: [],
-    filter: undefined,
-    isInEditMode: undefined,
+    filter: ALL_FILTER,
     idEdit: undefined,
     textEdit: undefined,
 };
@@ -33,15 +33,12 @@ const todoListSlice = createSlice({
             const itemToComplete = state.items.find(item => item.id === id);
             itemToComplete.isCompleted = !itemToComplete.isCompleted;
         },
-        setIsInEditMode: (state, {payload}) => {
-            state.isInEditMode = payload;
-        },
         setTextEdit: (state, {payload}) => {
             state.textEdit = payload;
         },
         setIdEdit: (state, {payload: id}) => {
             state.idEdit = id;
-            if (id === NEW_ITEM) {
+            if (id === NEW_ITEM_ID) {
                 state.textEdit = '';
                 return;
             }
@@ -49,7 +46,7 @@ const todoListSlice = createSlice({
             state.textEdit = itemToEdit && itemToEdit.text;
         },
         saveEditedItem: (state) => {
-            if (state.idEdit === NEW_ITEM) {
+            if (state.idEdit === NEW_ITEM_ID) {
                 state.items.push(createTodoItem({
                     id: nanoid(),
                     text: state.textEdit
@@ -71,7 +68,6 @@ const {actions, reducer} = todoListSlice;
 export const {
     setItems,
     setFilter,
-    setIsInEditMode,
     setTextEdit,
     setIdEdit,
     saveEditedItem,
@@ -84,11 +80,11 @@ export const getTodoItems = state => getState(state).items;
 export const getFilter = state => getState(state).filter;
 export const getTextEdit = state => getState(state).textEdit;
 export const getIdEdit = state => getState(state).idEdit;
-export const getIsInEditMode = state => Boolean(getIdEdit(state));
+export const getIsInEditMode = (state, id) => getIdEdit(state) === id;
 export const getVisibleTodoItems = state => {
     const filter = getFilter(state);
     const todoItems = getTodoItems(state);
-    if (!filter) {
+    if (filter === ALL_FILTER) {
         return todoItems;
     }
     return todoItems.filter(item => filter === COMPLETED_FILTER ? item.isCompleted : !item.isCompleted)
