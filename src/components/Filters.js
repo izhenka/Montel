@@ -1,13 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
-import {COMPLETED_FILTER, getFilter, NOT_COMPLETED_FILTER, setFilter} from "../slices/todoList";
+import {ALL_FILTER, COMPLETED_FILTER, getFilter, NOT_COMPLETED_FILTER, setFilter} from "../slices/todoList";
 import Button from "../primitives/Button";
 
 const Filters = () => {
     return (
         <div className='filters'>
-            <FilterButton filter={undefined}>All</FilterButton>
-            <FilterButton filter={COMPLETED_FILTER}>Completed</FilterButton>
-            <FilterButton filter={NOT_COMPLETED_FILTER}>Not completed</FilterButton>
+            <FilterButton filter={ALL_FILTER}>Alle</FilterButton>
+            <FilterButton filter={COMPLETED_FILTER}>Fullført</FilterButton>
+            <FilterButton filter={NOT_COMPLETED_FILTER}>Ikke fullført</FilterButton>
         </div>
     )
 };

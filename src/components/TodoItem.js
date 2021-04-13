@@ -16,8 +16,14 @@ const TodoItem = ({id, text, isCompleted}) => {
         <div className='todo-item'>
             <ToggleButton isCompleted={isCompleted} itemId={id}/>
             <span className={isCompleted && 'completed'}>{text}</span>
-            <IconButton path={mdiPencilOutline} onClick={() => dispatch(setIdEdit(id))}/>
-            <IconButton path={mdiDeleteOutline} onClick={() => dispatch(deleteItem(id))}/>
+            <IconButton path={mdiPencilOutline}
+                        onClick={() => dispatch(setIdEdit(id))}
+                        title='Redigere'
+            />
+            <IconButton path={mdiDeleteOutline}
+                        onClick={() => dispatch(deleteItem(id))}
+                        title='Fjerne'
+            />
         </div>
     )
 };
@@ -25,8 +31,12 @@ const TodoItem = ({id, text, isCompleted}) => {
 const ToggleButton = ({isCompleted, itemId}) => {
     const dispatch = useDispatch();
     const iconPath = isCompleted ? mdiCheck : mdiRadioboxBlank;
+    const title = isCompleted ? 'Merk som ikke fullført' : 'Merk som fullført';
     return (
-        <IconButton path={iconPath} onClick={() => dispatch(toggleItemIsCompleted(itemId))}/>
+        <IconButton path={iconPath}
+                    onClick={() => dispatch(toggleItemIsCompleted(itemId))}
+                    title={title}
+        />
     )
 }
 

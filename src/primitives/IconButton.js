@@ -1,11 +1,11 @@
 import './icon-button.css'
 import Icon from "./Icon";
-const IconButton = ({path, onClick, className}) =>
+const IconButton = ({path, onClick, className, title}) =>
     <button
         className={`icon-button ${className}`}
         onClick={onClick}
     >
-        <Icon path={path}/>
+        <Icon path={path} title={title}/>
     </button>
 ;
 
