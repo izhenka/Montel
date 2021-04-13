@@ -1,4 +1,5 @@
 import {createSlice, nanoid} from "@reduxjs/toolkit";
+import {saveItemsToLocaleStorage} from "../utils/localStorageUtil";
 
 export const TODO_LIST_NAME = 'todolist';
 export const NEW_ITEM_ID = 'NEW_ITEM_ID';
@@ -70,10 +71,18 @@ export const {
     setFilter,
     setTextEdit,
     setIdEdit,
-    saveEditedItem,
-    deleteItem,
     toggleItemIsCompleted
 } = actions;
+
+export const saveEditedItem = () => async (dispatch, getState) => {
+    await dispatch(actions.saveEditedItem());
+    saveItemsToLocaleStorage(getTodoItems(getState()))
+}
+
+export const deleteItem = id => async (dispatch, getState) => {
+    await dispatch(actions.deleteItem(id));
+    saveItemsToLocaleStorage(getTodoItems(getState()))
+}
 
 export const getState = state => state[TODO_LIST_NAME];
 export const getTodoItems = state => getState(state).items;
