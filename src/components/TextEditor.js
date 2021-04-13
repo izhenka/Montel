@@ -10,23 +10,23 @@ const TextEditor = () => {
     const onSave = () => dispatch(saveEditedItem());
 
     return (
-        <div>
+        <div className='text-editor'>
             <div>
-                <input
+                <textarea
                     value={textEdit}
                     onChange={event => dispatch(setTextEdit(event.target.value))}
                     autoFocus={true}
+                    placeholder='Angi gjøremål'
                 />
             </div>
 
-            <Button onClick={onCancel}>Avbryt</Button>
-            <Button onClick={onSave}>Lagre</Button>
+            <div className='text-editor-buttons'>
+                <Button onClick={onSave} primary>Lagre</Button>
+                <Button onClick={onCancel}>Avbryt</Button>
+            </div>
+
         </div>
-
-
     )
-
-
 };
 
 export default TextEditor;

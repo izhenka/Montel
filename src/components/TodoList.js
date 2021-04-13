@@ -1,7 +1,6 @@
 import {useSelector} from "react-redux";
 import TodoItem from "./TodoItem";
 import {getVisibleTodoItems} from "../slices/todoList";
-import './todo-list.css'
 
 const TodoList = () => {
     const items = useSelector(getVisibleTodoItems);

@@ -1,3 +1,7 @@
+:root {
+    --primary-button-color: #039b85;
+}
+
 .button {
     padding: 0.35rem 1.2em;
     border: 0.1rem solid #444;
@@ -10,6 +14,12 @@
     transition: all 0.2s;
     background-color: #FFFFFF;
     cursor: pointer;
+}
+
+.button.primary {
+    color: #FFFFFF;
+    background-color: var(--primary-button-color);
+    border-color: var(--primary-button-color);
 }
 
 .button:hover, .button:focus, .button.active {

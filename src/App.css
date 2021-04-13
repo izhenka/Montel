@@ -1,16 +1,43 @@
-.App {
+:root {
+    --item-hover-background-color: #f9f9f9;
 }
 
-.App-link {
-  color: #61dafb;
+ul.todo-list {
+    list-style: none;
+    padding: 0;
+
 }
 
-main {
-  margin: 1rem;
+.todo-item {
+    padding: .5rem 0;
+    display: flex;
+    align-items: center;
 }
 
-* {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+.todo-item .completed {
+    text-decoration: line-through;
+}
+
+.todo-item span {
+    margin: 0 1rem 0 .5rem;
+}
+
+.todo-item:hover {
+    background-color: var(--item-hover-background-color);
+}
+
+.text-editor {
+    max-width: 350px;
+    padding: .5rem .5rem 0 .5rem;
+    background-color: var(--item-hover-background-color);
+}
+
+.text-editor textarea {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.text-editor-buttons {
+    text-align: right;
 }
