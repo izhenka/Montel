@@ -71,11 +71,15 @@ export const {
     setFilter,
     setTextEdit,
     setIdEdit,
-    toggleItemIsCompleted
 } = actions;
 
 export const saveEditedItem = () => async (dispatch, getState) => {
     await dispatch(actions.saveEditedItem());
+    saveItemsToLocaleStorage(getTodoItems(getState()))
+}
+
+export const toggleItemIsCompleted = id => async (dispatch, getState) => {
+    await dispatch(actions.toggleItemIsCompleted(id));
     saveItemsToLocaleStorage(getTodoItems(getState()))
 }
 

@@ -15,7 +15,7 @@ const TodoItem = ({id, text, isCompleted}) => {
     return (
         <div className='todo-item'>
             <ToggleButton isCompleted={isCompleted} itemId={id}/>
-            <span className={isCompleted && 'completed'}>{text}</span>
+            <span className={isCompleted ? 'completed' : ''}>{text}</span>
             <IconButton path={mdiPencilOutline}
                         onClick={() => dispatch(setIdEdit(id))}
                         title='Redigere'
