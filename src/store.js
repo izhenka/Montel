@@ -1,12 +1,14 @@
-import {configureStore,} from "@reduxjs/toolkit";
-import todoListReducer, {initialState as todoListInitialState, TODO_LIST_NAME} from "./slices/todoList";
-import {getItemsFromLocaleStorage} from "./utils/localStorageUtil";
+import { configureStore, } from "@reduxjs/toolkit";
+import todoListReducer, { initialState as todoListInitialState, TODO_LIST_NAME } from "./slices/todoList";
+import catsReducer, { CATS_NAME } from "./slices/cats";
+import { getItemsFromLocaleStorage } from "./utils/localStorageUtil";
 
 
 const store = configureStore({
     preloadedState: getPreloadedState(),
     reducer: {
-        [TODO_LIST_NAME]: todoListReducer
+        [TODO_LIST_NAME]: todoListReducer,
+        [CATS_NAME]: catsReducer,
     },
 })
 

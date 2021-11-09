@@ -1,20 +1,25 @@
 import './App.css';
-import {setPageTitle} from "./utils/DOMUtils";
-import {AddTodoButton} from "./components/AddTodoButton";
-import TodoList from "./components/TodoList";
-import Filters from "./components/Filters";
+import CatsPage from "./pages/cat-breeds/CatsPage";
+import TodoListPage from "./pages/todo-list/TodoListPage";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import React from 'react';
 
 function App() {
-    setPageTitle("To-Do list")
     return (
-        <div className="App">
-            <main>
-                <h1>To-Do list</h1>
-                <Filters/>
-                <TodoList/>
-                <AddTodoButton/>
-            </main>
-        </div>
+        <Router>
+            <div className="App">
+                <main>
+                    <Routes>
+                        <Route path="/" element={<TodoListPage />} />
+                        <Route path="/cats" element={<CatsPage />} />
+                    </Routes>
+                </main>
+            </div>
+        </Router>
     );
 }
 
