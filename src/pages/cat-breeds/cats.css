@@ -16,12 +16,18 @@ img {
     position: relative;
 }
 
-.card-header .icon-button {
+.card-header .like-button {
     position: absolute;
     right: .5rem;
     top: .5rem;
 }
 
-.card-header.favorite .icon-button .icon {
+.card-header .remove-button {
+    position: absolute;
+    right: 3.5rem;
+    top: .5rem;
+}
+
+.card-header.favorite .like-button .icon {
     color: tomato;
 }

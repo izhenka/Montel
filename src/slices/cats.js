@@ -23,6 +23,9 @@ const todoListSlice = createSlice({
                 state.favorites.push(breedId);
             }
         },
+        removeBreed: (state, { payload: breedId }) => {
+            state.breeds = state.breeds.filter(breed => breed.id !== breedId);
+        },
     }
 });
 
@@ -31,6 +34,7 @@ const { actions, reducer } = todoListSlice;
 export const {
     toggleFavorite,
     setBreeds,
+    removeBreed,
 } = actions;
 
 

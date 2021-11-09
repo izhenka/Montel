@@ -24,7 +24,7 @@ function App() {
                     <div>
                         <Link to="/todos">Todos</Link>
                         <Link to="/cats">Cats</Link>
-                        <Link to="/cat-picture">CatPicture</Link>
+                        <Link to="/cat-picture">Cat Picture</Link>
                     </div>
                     <Routes>
                         <Route path="/" element={<CatPicturePage />} />

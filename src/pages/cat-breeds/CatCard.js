@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsFavoriteBreedById, toggleFavorite } from "../../slices/cats";
+import { getIsFavoriteBreedById, removeBreed, toggleFavorite } from "../../slices/cats";
 import "./cats.css"
 import IconButton from "../../primitives/IconButton";
-import { mdiHeart, mdiHeartOutline } from "@mdi/js";
+import { mdiHeart, mdiHeartOutline, mdiThumbDown } from "@mdi/js";
 
 const CatCard = ({ id, name, image, description }) => {
     const dispatch = useDispatch();
@@ -14,9 +14,15 @@ const CatCard = ({ id, name, image, description }) => {
             <div>
                 <div className={`card-header ${isFavorite && "favorite"}`}>
                     <h2>{name}</h2>
+                    <IconButton path={mdiThumbDown}
+                        className="remove-button"
+                        onClick={() => dispatch(removeBreed(id))}
+                        title='Remove'
+                    />
                     <IconButton path={isFavorite ? mdiHeart : mdiHeartOutline}
+                        className="like-button"
                         onClick={() => dispatch(toggleFavorite(id))}
-                        title='Edit'
+                        title='Favorite'
                     />
                 </div>
                 <p>{description}</p>
