@@ -5,7 +5,6 @@
 ul.todo-list {
     list-style: none;
     padding: 0;
-
 }
 
 .todo-item {
@@ -40,4 +39,8 @@ ul.todo-list {
 
 .text-editor-buttons {
     text-align: right;
+}
+
+a {
+    margin-right: 1rem;
 }

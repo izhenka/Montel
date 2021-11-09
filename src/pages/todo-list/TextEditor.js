@@ -17,7 +17,7 @@ const TextEditor = () => {
                     value={textEdit}
                     onChange={event => dispatch(setTextEdit(event.target.value))}
                     autoFocus={true}
-                    placeholder='Angi gjøremål'
+                    placeholder='Specify task'
                 />
             </div>
 
