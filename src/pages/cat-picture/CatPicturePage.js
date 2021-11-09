@@ -11,12 +11,13 @@ const CatPicturePage = () => {
     setPageTitle("Picture")
     const [data, setData] = useState(undefined);
     const [onlyFavorites, setOnlyFavorites] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const favorites = useSelector(getFavoriteBreeds);
     const apiRoute = "https://api.thecatapi.com/v1/images/search";
 
     const fetchData = async () => {
         const randomFavorite = getRandomElement(favorites);
-
+        setIsLoading(true);
         try {
             const result = await axios.get(onlyFavorites ? `${apiRoute}?breed_ids=${randomFavorite}` : apiRoute);
             result.data.length && setData(result.data[0]);
@@ -30,11 +31,12 @@ const CatPicturePage = () => {
     return (
         <div className="cat-picture-page">
             <h1>Cat picture</h1>
-            {data && <img src={data.url} alt="Random cat" className="big-img" />}
+            {data && <img src={data.url} alt="Random cat" className="big-img" onLoad={() => setIsLoading(false)} />}
             <div>
                 <Button
                     primary
                     onClick={fetchData}
+                    isLoading={isLoading}
                 >
                     Load new
                 </Button>
