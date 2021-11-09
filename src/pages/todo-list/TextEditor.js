@@ -1,6 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {getTextEdit, saveEditedItem, setIdEdit, setTextEdit} from "../slices/todoList";
-import Button from "../primitives/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { getTextEdit, saveEditedItem, setIdEdit, setTextEdit } from "../../slices/todoList";
+import Button from "../../primitives/Button";
+import React from "react";
 
 const TextEditor = () => {
 

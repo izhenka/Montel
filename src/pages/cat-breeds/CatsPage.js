@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPageTitle } from "../../utils/DOMUtils";
 import { getBreeds, setBreeds } from "../../slices/cats";
 import "./cats.css"
+import IconButton from "../../primitives/IconButton";
+import { mdiHeart, mdiHeartBoxOutline, mdiHeartOutline } from "@mdi/js";
 
 const CatsPage = () => {
     setPageTitle("Cats")
@@ -34,7 +36,13 @@ const CatsPage = () => {
                 {breeds && breeds.map(breed => <div className="cat-card">
                     <img src={breed?.image?.url} alt={breed.name + " photo"} />
                     <div>
-                        <h2>{breed.name}</h2>
+                        <div className="card-header">
+                            <h2>{breed.name}</h2>
+                            <IconButton path={mdiHeartOutline}
+                                onClick={() => alert("Nothing happens")}
+                                title='Edit'
+                            />
+                        </div>
                         <p>{breed.description}</p>
                     </div>
                 </div>)}

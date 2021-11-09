@@ -13,4 +13,11 @@ img {
     border: 1px solid lightgray;
     border-radius: 10px;
     max-width: 800px;
+    position: relative;
+}
+
+.card-header .icon-button {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
 }

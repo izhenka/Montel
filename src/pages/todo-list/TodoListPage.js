@@ -1,7 +1,7 @@
 
-import { AddTodoButton } from "../../components/AddTodoButton";
-import TodoList from "../../components/TodoList";
-import Filters from "../../components/Filters";
+import { AddTodoButton } from "./AddTodoButton";
+import TodoList from "./TodoList";
+import Filters from "./Filters";
 import React from "react";
 import { setPageTitle } from "../../utils/DOMUtils";
 

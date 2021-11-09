@@ -1,6 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {ALL_FILTER, COMPLETED_FILTER, getFilter, NOT_COMPLETED_FILTER, setFilter} from "../slices/todoList";
-import Button from "../primitives/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { ALL_FILTER, COMPLETED_FILTER, getFilter, NOT_COMPLETED_FILTER, setFilter } from "../../slices/todoList";
+import Button from "../../primitives/Button";
+import React from "react";
 
 const Filters = () => {
     return (
@@ -13,7 +14,7 @@ const Filters = () => {
 };
 
 
-const FilterButton = ({filter, children}) => {
+const FilterButton = ({ filter, children }) => {
     const dispatch = useDispatch();
     const activeFilter = useSelector(getFilter);
     const className = activeFilter === filter && 'active';
