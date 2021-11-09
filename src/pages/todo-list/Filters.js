@@ -6,9 +6,9 @@ import React from "react";
 const Filters = () => {
     return (
         <div className='filters'>
-            <FilterButton filter={ALL_FILTER}>Alle</FilterButton>
-            <FilterButton filter={COMPLETED_FILTER}>Fullført</FilterButton>
-            <FilterButton filter={NOT_COMPLETED_FILTER}>Ikke fullført</FilterButton>
+            <FilterButton filter={ALL_FILTER}>All</FilterButton>
+            <FilterButton filter={COMPLETED_FILTER}>Completed</FilterButton>
+            <FilterButton filter={NOT_COMPLETED_FILTER}>Not completed</FilterButton>
         </div>
     )
 };

@@ -22,8 +22,8 @@ const TextEditor = () => {
             </div>
 
             <div className='text-editor-buttons'>
-                <Button onClick={onSave} primary>Lagre</Button>
-                <Button onClick={onCancel}>Avbryt</Button>
+                <Button onClick={onSave} primary>Save</Button>
+                <Button onClick={onCancel}>Cancel</Button>
             </div>
 
         </div>

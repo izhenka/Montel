@@ -6,7 +6,7 @@ import React from "react";
 const TodoList = () => {
     const items = useSelector(getVisibleTodoItems);
     if (items.length === 0) {
-        return <p>Ingen gjøremål</p>
+        return <p>No tasks</p>
     }
     return (
         <ul className='todo-list'>

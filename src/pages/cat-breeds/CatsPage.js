@@ -5,13 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPageTitle } from "../../utils/DOMUtils";
 import { getBreeds, setBreeds } from "../../slices/cats";
 import "./cats.css"
-import IconButton from "../../primitives/IconButton";
-import { mdiHeart, mdiHeartBoxOutline, mdiHeartOutline } from "@mdi/js";
+import CatCard from "./CatCard";
 
 const CatsPage = () => {
     setPageTitle("Cats")
-
-
     const dispatch = useDispatch();
     useEffect(() => {
         const fetchData = async () => {
@@ -27,25 +24,11 @@ const CatsPage = () => {
 
     const breeds = useSelector(getBreeds);
 
-
-
     return (
         <div>
             <h1>Cat breeds</h1>
             <div>
-                {breeds && breeds.map(breed => <div className="cat-card">
-                    <img src={breed?.image?.url} alt={breed.name + " photo"} />
-                    <div>
-                        <div className="card-header">
-                            <h2>{breed.name}</h2>
-                            <IconButton path={mdiHeartOutline}
-                                onClick={() => alert("Nothing happens")}
-                                title='Edit'
-                            />
-                        </div>
-                        <p>{breed.description}</p>
-                    </div>
-                </div>)}
+                {breeds && breeds.map(breed => <CatCard key={breed.id} {...breed} />)}
             </div>
         </div>
     )

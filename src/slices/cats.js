@@ -1,5 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { saveItemsToLocaleStorage } from "../utils/localStorageUtil";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const CATS_NAME = 'cats';
 
@@ -16,18 +15,29 @@ const todoListSlice = createSlice({
         setBreeds: (state, { payload }) => {
             state.breeds = payload;
         },
+        toggleFavorite: (state, { payload: breedId }) => {
+            const isFavorite = state.favorites.includes(breedId);
+            if (isFavorite) {
+                state.favorites = state.favorites.filter(id => id !== breedId);
+            } else {
+                state.favorites.push(breedId);
+            }
+        },
     }
 });
 
 const { actions, reducer } = todoListSlice;
 
 export const {
+    toggleFavorite,
     setBreeds,
 } = actions;
 
 
 export const getState = state => state[CATS_NAME];
 export const getBreeds = state => getState(state).breeds;
+export const getFavoriteBreeds = state => getState(state).favorites;
+export const getIsFavoriteBreedById = (state, breedId) => getFavoriteBreeds(state).includes(breedId);
 
 
 export default reducer;

@@ -21,3 +21,7 @@ img {
     right: .5rem;
     top: .5rem;
 }
+
+.card-header.favorite .icon-button .icon {
+    color: tomato;
+}
